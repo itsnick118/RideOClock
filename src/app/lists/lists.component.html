@@ -1,0 +1,26 @@
+<br>
+<br>
+<br>
+<br>
+<div class="card">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let members of amembers">
+                <th>{{members.id}} </th>
+                <td>{{members.firstName}}</td>
+                <td>{{members.lastName}}</td>
+                <td>{{members.email}}</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
