@@ -14,7 +14,7 @@ export class ListsComponent implements OnInit {
 
   users=[];
 
-  /*
+
 
   constructor(private http: HttpClient) {}
 
@@ -41,8 +41,8 @@ export class ListsComponent implements OnInit {
       console.log(data);
     })
   }
-  */
 
+/*
   members:Member[]=[];
 
   constructor (private memberservice:MembersService){
@@ -55,4 +55,5 @@ export class ListsComponent implements OnInit {
     )
 
   }
+  */
 }
