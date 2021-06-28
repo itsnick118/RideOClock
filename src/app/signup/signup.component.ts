@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 export class SignupComponent implements OnInit {
   pmembers:any
 
-  member:Member=new Member();
+  member:Member;
 
 
 
@@ -20,9 +20,11 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  postMembers(){
+  postmembers(){
     this.membersService.postMembers(this.member).subscribe(
-      data
+      data=>{
+        console.log("response",data)
+      }
     )
 
   }
