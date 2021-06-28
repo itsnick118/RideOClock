@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
+  formModel={
+    Username:'',
+    Password:''
+  }
+
   constructor() { }
 
   ngOnInit(): void {

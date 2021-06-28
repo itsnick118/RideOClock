@@ -2,6 +2,36 @@
 <br>
 <br>
 <br>
-<div class="text-center">
-    <h1>SignUp works!</h1>
-</div>
+
+<form #postMembers="ngForm" (ngSubmit)="postmembers()" autocomplete="off">
+    <h2 class="text-center text-primary">SignUp</h2>
+    <hr>
+    <div class="form-group">
+        <input type="text" class="form-control" name="firstName" [(ngModel)]="pmembers.firstname" placeholder="FirstName">
+
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="lastName" [(ngModel)]="pmembers.lastname" placeholder="LastName">
+
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="gender" [(ngModel)]="pmembers.gender" placeholder="Gender">
+
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="mobile" [(ngModel)]="pmembers.mobile" placeholder="Mobile">
+
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="emailid" [(ngModel)]="pmembers.emailid" placeholder="EmailId">
+
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="address" [(ngModel)]="pmembers.address" placeholder="Address">
+
+    </div>
+    <div class="form-group text-center">
+        <button class="btn btn-success mr-2" type="submit">Register</button>
+        <button class="btn btn-default mr-2" (click)="cancel()" type="button">Cancel</button>
+    </div>
+</form>
