@@ -6,14 +6,22 @@
 <br>
 <br>
 <div class="container">
+    <h2 class="text-center text-primary">SignIn</h2>
+    <hr class="mb-4">
     <form #form='ngForm' class="mb-4" autocomplete="off">
         <div class="form-group">
-            <label>username</label>
-            <input #username="ngModel" name="username" [(ngModel)]="formModel.username">
+            <label>UserName</label>
+            <input type="text" class="form-control" #username="ngModel" name="username" [(ngModel)]="formModel.username">
         </div>
+        <br>
         <div class="form-group">
-            <label>password</label>
-            <input #password="ngModel" name="password" [(ngModel)]="formModel.password">
+            <label>PassWord</label>
+            <input #password="ngModel" class="form-control" name="password" [(ngModel)]="formModel.password">
         </div>
-    </form>
-</div>
+        <br>
+
+        <br>
+        <div class="form-group text-center">
+            <button class="btn btn-success btn-lg mr-2" type="submit">SignIn</button>
+            <button class="btn btn-default mr-2" type="button">Cancel</button>
+        </div>
