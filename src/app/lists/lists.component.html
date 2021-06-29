@@ -2,34 +2,37 @@
 <br>
 <br>
 <br>
-<div class="card">
+<div class="text-center">
+    <div class="card">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">id</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Gender</th>
-                <th scope="col">mobile</th>
-                <th scope="col">Email</th>
-                <th scope="col">Address</th>
-                <th scope="col">DrivingLicense</th>
 
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let members of amembers">
-                <th>{{members.id}} </th>
-                <td>{{members.firstName}}</td>
-                <td>{{members.lastName}}</td>
-                <td>{{members.gender}}</td>
-                <td>{{members.mobile}}</td>
-                <td>{{members.email}}</td>
-                <td>{{members.address}}</td>
-                <td>{{members.drivinglic}}</td>
-            </tr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">mobile</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">DrivingLicense</th>
 
-        </tbody>
-    </table>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let members of amembers">
+                    <th>{{members.id}} </th>
+                    <td>{{members.firstName}}</td>
+                    <td>{{members.lastName}}</td>
+                    <td>{{members.gender}}</td>
+                    <td>{{members.mobile}}</td>
+                    <td>{{members.email}}</td>
+                    <td>{{members.address}}</td>
+                    <td>{{members.drivinglic}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
 </div>
