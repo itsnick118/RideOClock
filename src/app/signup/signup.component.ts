@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Member } from './../_models/member';
 import { MembersService } from './../_services/members.service';
 import { Component, OnInit } from '@angular/core';
@@ -15,7 +16,7 @@ export class SignupComponent implements OnInit {
 
 
 
-  constructor(private membersService: MembersService) { }
+ constructor(private membersService: MembersService) { }
 
   ngOnInit(): void {
   }
@@ -37,6 +38,7 @@ export class SignupComponent implements OnInit {
     })
   }
 */
+
   cancel(){
     console.log("cancelled")
   }

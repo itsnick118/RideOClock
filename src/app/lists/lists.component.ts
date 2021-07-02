@@ -9,51 +9,26 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./lists.component.css'],
 })
 export class ListsComponent implements OnInit {
-  baseUrl = environment.apiUrl;
-  amembers:any;
-
-  users=[];
 
 
 
-  constructor(private http: HttpClient) {}
+  members:Member[];
 
 
 
-  ngOnInit() {
-    this.getusers();
-    this.getmembers();
+
+
+
+  constructor(private memberservice:MembersService){}
+
+  ngOnInit():void {
+
+   this.loadMembers();
   }
+  loadMembers(){
+    this.memberservice.getMembers().subscribe(members=>{
+      this.members=members;
+  })
+}
 
-  getmembers() {
-    this.http.get(this.baseUrl+'members').subscribe(
-      response => {
-       this.amembers=response;
-      },
-      error => {
-        console.log(error);
-      }
-    )
-  }
-
-  private getusers(){
-    this.http.get('https://localhost:44310/api/users').subscribe(data=>{
-      console.log(data);
-    })
-  }
-
-/*
-  members:Member[]=[];
-
-  constructor (private memberservice:MembersService){
-
-  }
-
-  ngOnInit(){
-    this.memberservice.getMembers().subscribe(
-      data=>this.members=data
-    )
-
-  }
-  */
 }

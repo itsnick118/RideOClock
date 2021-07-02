@@ -15,7 +15,8 @@ import { FormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import {BsDatepickerModule} from "ngx-bootstrap/datepicker"
 import{BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { SigninComponent } from './signin/signin.component'
+import { SigninComponent } from './signin/signin.component';
+import { RegistrationComponent } from './registration/registration.component'
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { SigninComponent } from './signin/signin.component'
     BookingComponent,
     ListsComponent,
     SigninComponent,
+    RegistrationComponent,
 
   ],
   imports: [
