@@ -40,6 +40,7 @@ export class RegistrationComponent implements OnInit {
       .subscribe((data) => {
         this.router.navigateByUrl('/lists');
       });
+      alert("you have successfully register to the ROR");
   }
 
   cancel() {

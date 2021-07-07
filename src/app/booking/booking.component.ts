@@ -1,4 +1,14 @@
+import { BookingsService } from './../_services/bookings.service';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import {SelectItem} from 'primeng/api';
+import {SelectItemGroup} from 'primeng/api';
+
+interface City {
+  name: string,
+  code: string
+}
 
 @Component({
   selector: 'app-booking',
@@ -7,16 +17,46 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookingComponent implements OnInit {
 
-  bsValue = new Date();
-  bsRangeValue: Date[];
-  maxDate = new Date();
-  constructor() {
-    this.maxDate.setDate(this.maxDate.getDate() + 7);
-    this.bsRangeValue = [this.bsValue, this.maxDate];
-  }
+  date1= Date;
 
+  cities: any;
+
+  BookingForm: FormGroup;
+
+  constructor(private bookingservice: BookingsService, private router: Router) {
+    this.cities = [
+      {name: 'New York', code: 'NY'},
+      {name: 'Rome', code: 'RM'},
+      {name: 'London', code: 'LDN'},
+      {name: 'Istanbul', code: 'IST'},
+      {name: 'Paris', code: 'PRS'}
+  ];
+  }
 
   ngOnInit(): void {
+    this.initiliazeForm();
   }
 
+  initiliazeForm(){
+    this.BookingForm=new FormGroup({
+      gender:new FormControl('', Validators.required),
+
+
+    })
+  }
+
+  Book() {
+    this.bookingservice
+      .postBookings(this.BookingForm.value)
+      .subscribe((data) => {
+        this.router.navigateByUrl('/lists');
+      });
+      alert("you have successfully Booked your Car ");
+
+    }
+  cancel() {
+    console.log('cancelled');
+    alert("cancelled");
+  }
 }
+

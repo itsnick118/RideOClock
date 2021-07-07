@@ -1,6 +1,4 @@
 import { Member } from './../_models/member';
-import { Observable } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
 import { environment } from './../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';

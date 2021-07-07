@@ -8,17 +8,16 @@ import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { EditComponent } from './edit/edit.component';
-
+import {DropdownModule} from 'primeng/dropdown';
 import { BookingComponent } from './booking/booking.component';
 import { ListsComponent } from './lists/lists.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import {BsDatepickerModule} from "ngx-bootstrap/datepicker"
 import{BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { SigninComponent } from './signin/signin.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { InputTextModule } from "primeng/inputtext";
-
+import {CalendarModule} from 'primeng/calendar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +40,9 @@ import { InputTextModule } from "primeng/inputtext";
     BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    InputTextModule
+    InputTextModule,
+    CalendarModule,
+    DropdownModule
 
 
   ],
