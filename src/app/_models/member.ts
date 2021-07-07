@@ -7,4 +7,5 @@ export interface Member {
   email: string;
   address: string;
   drivinglic: string;
+  password: string;
 }

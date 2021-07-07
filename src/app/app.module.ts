@@ -8,15 +8,16 @@ import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { EditComponent } from './edit/edit.component';
-import { SignupComponent } from './signup/signup.component';
+
 import { BookingComponent } from './booking/booking.component';
 import { ListsComponent } from './lists/lists.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import {BsDatepickerModule} from "ngx-bootstrap/datepicker"
 import{BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { SigninComponent } from './signin/signin.component';
-import { RegistrationComponent } from './registration/registration.component'
+import { RegistrationComponent } from './registration/registration.component';
+import { InputTextModule } from "primeng/inputtext";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,6 @@ import { RegistrationComponent } from './registration/registration.component'
     NavComponent,
     AboutusComponent,
     EditComponent,
-    SignupComponent,
     BookingComponent,
     ListsComponent,
     SigninComponent,
@@ -39,7 +39,10 @@ import { RegistrationComponent } from './registration/registration.component'
     HttpClientModule,
     FormsModule,
     BsDatepickerModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    InputTextModule
+
 
   ],
   providers: [],

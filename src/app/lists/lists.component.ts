@@ -9,26 +9,16 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./lists.component.css'],
 })
 export class ListsComponent implements OnInit {
+  members: Member[];
 
+  constructor(private memberservice: MembersService) {}
 
-
-  members:Member[];
-
-
-
-
-
-
-  constructor(private memberservice:MembersService){}
-
-  ngOnInit():void {
-
-   this.loadMembers();
+  ngOnInit(): void {
+    this.loadMembers();
   }
-  loadMembers(){
-    this.memberservice.getMembers().subscribe(members=>{
-      this.members=members;
-  })
-}
-
+  loadMembers() {
+    this.memberservice.getMembers().subscribe((members) => {
+      this.members = members;
+    });
+  }
 }

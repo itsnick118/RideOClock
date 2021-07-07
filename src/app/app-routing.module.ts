@@ -1,7 +1,7 @@
 import { RegistrationComponent } from './registration/registration.component';
 import { SigninComponent } from './signin/signin.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
-import { SignupComponent } from './signup/signup.component';
+
 import { EditComponent } from './edit/edit.component';
 import { BookingComponent } from './booking/booking.component';
 import { ListsComponent } from './lists/lists.component';
@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'lists', component: ListsComponent },
   { path: 'bookings', component: BookingComponent },
   { path: 'edit', component: EditComponent },
-  { path: 'signup', component: SignupComponent },
+
   { path: 'aboutus', component: AboutusComponent },
   {path:'login',component:SigninComponent},
   {path:'registration',component:RegistrationComponent}
