@@ -3,11 +3,10 @@
         <h2 class="text-center text-primary">SignUp</h2>
         <hr class="mb-4">
         <form [formGroup]='registerForm' (ngSubmit)="register()" autocomplete="off">
-
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <div class="form-group">
-                        <label for="firstName">First name</label>
+                        <label for="firstName"><strong>First name</strong></label>
                         <input type="text" class="form-control" formControlName='firstName' placeholder="firstName">
                         <div class="invalid-feedback">
                             Valid first name is required.
@@ -16,7 +15,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <div class="form-group">
-                        <label for="lastName">Last name</label>
+                        <label for="lastName"><strong>Last name</strong></label>
                         <input type="text" class="form-control" formControlName='lastName' placeholder="firstName">
                         <div class="invalid-feedback">
                             Valid last name is required.
@@ -26,7 +25,7 @@
             </div>
             <div class="col-md-6 mb-3">
                 <div class="form-group">
-                    <label for="gender">Gender</label>
+                    <label for="gender"><strong>Gender</strong></label>
                     <div class="radio" *ngFor="let gender of genders">
                         <label>
                     <input type="radio" formControlName="gender" [value]="gender">{{gender}}>
@@ -36,17 +35,16 @@
             </div>
             <div class="mb-3">
                 <div class="form-group">
-                    <label for="mobile">Mobile <span class="text-muted"></span></label>
+                    <label for="mobile"><strong>Mobile</strong> <span class="text-muted"></span></label>
                     <input type="mobile" class="form-control" placeholder="+91-1234567890" formControlName='mobile'>
                     <div class="invalid-feedback">
                         Please enter a valid Mobile ..
                     </div>
                 </div>
             </div>
-
             <div class="mb-3">
                 <div class="form-group">
-                    <label for="email">Email <span class="text-muted"></span></label>
+                    <label for="email"><strong>email</strong> <span class="text-muted"></span></label>
                     <input type="email" class="form-control" placeholder="you@example.com" formControlName='email'>
                     <div class="invalid-feedback">
                         Please enter a valid email address ..
@@ -55,17 +53,16 @@
             </div>
             <div class="mb-3">
                 <div class="form-group">
-                    <label for="drivinglic">DrivingLic <span class="text-muted"></span></label>
+                    <label for="drivinglic"><strong>DrivingLic</strong> <span class="text-muted"></span></label>
                     <input type="drivinglic" class="form-control" placeholder="you@example.com" formControlName='drivinglic'>
                     <div class="invalid-feedback">
                         Please enter a valid DrivingLic No...
                     </div>
                 </div>
             </div>
-
             <div class="mb-3">
                 <div class="form-group">
-                    <label for="address">Address</label>
+                    <label for="address"><strong>Address</strong></label>
                     <input type="text" class="form-control" placeholder="1234 Main St" formControlName='address'>
                     <div class="invalid-feedback">
                         Please enter your address.
@@ -75,7 +72,7 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <div class="form-group">
-                        <label for="password">Password</label>
+                        <label for="password"><strong>Password</strong></label>
                         <input type="text" class="form-control" formControlName='password' placeholder="Password">
                         <div class="invalid-feedback">
                             Valid Password is required.
@@ -84,7 +81,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <div class="form-group">
-                        <label for="Password">Confirm Password</label>
+                        <label for="Password"><strong>Confirm Password</strong></label>
                         <input type="text" class="form-control" placeholder="Password">
                         <div class="invalid-feedback">
                             please Confirm Your password
@@ -92,8 +89,6 @@
                     </div>
                 </div>
             </div>
-
-
             <hr class="mb-4">
             <div class="form-group text-center">
                 <button class="btn btn-success mr-2" type="submit">Register</button>

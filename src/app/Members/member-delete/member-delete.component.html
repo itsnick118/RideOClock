@@ -1,0 +1,8 @@
+<div class="container" style=" margin-top:2cm">
+    <h2 class="text-center text-primary"> Members Details</h2>
+    <hr> {{member|json}} are you sure?
+    <form (ngSubmit)="deletedata()">
+        <button class="btn btn-danger " type="submit">Delete</button>
+        <button class="btn btn-info " type="button" [routerLink]="['/lists']">cancel</button>&nbsp;
+    </form>
+</div>

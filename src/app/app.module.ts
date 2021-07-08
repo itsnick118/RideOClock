@@ -10,7 +10,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { EditComponent } from './edit/edit.component';
 import {DropdownModule} from 'primeng/dropdown';
 import { BookingComponent } from './booking/booking.component';
-import { ListsComponent } from './lists/lists.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BsDatepickerModule} from "ngx-bootstrap/datepicker"
 import{BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -18,6 +18,10 @@ import { SigninComponent } from './signin/signin.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { InputTextModule } from "primeng/inputtext";
 import {CalendarModule} from 'primeng/calendar';
+import { MemberDeleteComponent } from './Members/member-delete/member-delete.component';
+import { MemberEditComponent } from './Members/member-edit/member-edit.component';
+import { MemberDetailsComponent } from './Members/member-details/member-details.component';
+import { ListsComponent } from './Members/lists/lists.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,10 +29,13 @@ import {CalendarModule} from 'primeng/calendar';
     NavComponent,
     AboutusComponent,
     EditComponent,
-    BookingComponent,
     ListsComponent,
+    BookingComponent,
     SigninComponent,
     RegistrationComponent,
+    MemberDeleteComponent,
+    MemberEditComponent,
+    MemberDetailsComponent
 
   ],
   imports: [
