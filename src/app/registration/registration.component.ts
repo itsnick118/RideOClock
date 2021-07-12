@@ -41,6 +41,7 @@ export class RegistrationComponent implements OnInit {
         this.router.navigateByUrl('/lists');
       });
       alert("you have successfully register to the ROR");
+
   }
 
   cancel() {
