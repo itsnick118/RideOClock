@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Member } from 'src/app/_models/member';
+import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { MembersService } from 'src/app/_services/members.service';
 
@@ -10,7 +12,10 @@ import { MembersService } from 'src/app/_services/members.service';
   styleUrls: ['./member-details.component.css'],
 })
 export class MemberDetailsComponent implements OnInit {
+
+  @ViewChild('editForm') editForm: NgForm;
   members: Member;
+  user: User;
 
   constructor(
     private memberservice: MembersService,

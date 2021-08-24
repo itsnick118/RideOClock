@@ -4,6 +4,6 @@ export interface Booking {
   lastName: string;
   startDate: Date;
   endDate: Date;
-  carType: string;
+  cartype: string;
   car: string;
 }

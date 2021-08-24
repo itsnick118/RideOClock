@@ -1,5 +1,8 @@
 <div class="container" style=" margin-bottom:2cm; margin-top: 0.5cm;">
     <h2 class=" text-primary">Book your Car</h2>
+    <div class="row" *ngFor="members of members.bookings">
+        <h1>welcome {{members.firstName}}</h1>
+    </div>
     <form [formGroup]='BookingForm' (ngSubmit)="Book()" autocomplete="off">
         <div class="text-center-md md-10">
 
@@ -55,9 +58,6 @@
                     </select>
                 </div>
             </div>
-
-
-
         </div>
         <div class="col-xs-12 col-12 col-md-5 form-group">
         </div>

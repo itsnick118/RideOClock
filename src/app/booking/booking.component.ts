@@ -1,9 +1,20 @@
+import { environment } from './../../environments/environment';
 import { BookingsService } from './../_services/bookings.service';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SelectItem } from 'primeng/api';
 import { SelectItemGroup } from 'primeng/api';
+import { MembersService } from '../_services/members.service';
+import { AccountService } from '../_services/account.service';
+import { Member } from '../_models/member';
+import { take } from 'rxjs/operators';
+import { User } from '../_models/user';
 
 interface City {
   name: string;
@@ -16,13 +27,25 @@ interface City {
   styleUrls: ['./booking.component.css'],
 })
 export class BookingComponent implements OnInit {
+  @Input() members: Member;
+
   today: Date;
   minDate: Date;
   BookingForm: FormGroup;
   selectedCarType = 0;
   Car = [];
+  baseUrl = environment.apiUrl;
+  user:User;
 
-  constructor(private bookingservice: BookingsService, private router: Router,  private fb: FormBuilder) {
+  constructor(
+    private bookingservice: BookingsService,
+    private router: Router,
+    private fb: FormBuilder,
+    private memberservice: MembersService,
+    private accountservice: AccountService,
+    private _activatedRoute: ActivatedRoute
+  ) {
+    this.accountservice.currentUser$.pipe(take(1)).subscribe(user => this.user=user);
     this.minDate = new Date();
     this.today = new Date();
     this.minDate.setDate(this.today.getDate() + 1);
@@ -31,6 +54,12 @@ export class BookingComponent implements OnInit {
 
   ngOnInit(): void {
     this.initiliazeForm();
+    let membercode: string = this._activatedRoute.snapshot.params['id'];
+    let mcode: number = parseInt(membercode);
+    this.memberservice
+      .getMemberbyid(mcode)
+      .subscribe((data) => (this.members = data));
+    this.loadMember();
   }
 
   initiliazeForm() {
@@ -41,6 +70,13 @@ export class BookingComponent implements OnInit {
       endDate: ['', Validators.required],
       carType: ['', Validators.required],
       car: ['', Validators.required],
+    });
+  }
+
+  initializeUploader() {
+    this.BookingForm = new FormGroup({
+    //  url: this.baseUrl + 'users/add-booking',
+     // authToken: 'Bearer'+this.user.token,
     });
   }
 
@@ -57,7 +93,13 @@ export class BookingComponent implements OnInit {
     console.log('cancelled');
     alert('cancelled');
   }
-
+  loadMember() {
+    this.memberservice
+      .getMember(this._activatedRoute.snapshot.paramMap.get('username'))
+      .subscribe((member) => {
+        this.members = member;
+      });
+  }
 
   onSelectCarType(carType_id: number) {
     this.selectedCarType = carType_id;

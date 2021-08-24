@@ -6,23 +6,23 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">First Name</th>
-                        <th scope="col">last Name</th>
                         <th scope="col">startDate</th>
                         <th scope="col">endDate</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">last Name</th>
                         <th scope="col">carType</th>
                         <th scope="col">car</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let bookings of bookings">
-                        <td>{{bookings.firstName}}</td>
-                        <td>{{bookings.lastName}}</td>
-                        <td>{{bookings.startDate}}</td>
-                        <td>{{bookings.endDate}}</td>
-                        <td>{{bookings.carType}}</td>
-                        <td>{{bookings.car}}</td>
+                    <tr *ngFor="let booking of members.bookings">
+                        <td>{{booking.startDate}}</td>
+                        <td>{{booking.endDate}}</td>
+                        <td>{{booking.firstName}}</td>
+                        <td>{{booking.lastName}}</td>
+                        <td>{{booking.cartype}}</td>
+                        <td>{{booking.car}}</td>
                         <td><button class="btn btn-dark " type="button">Details</button> &nbsp;
                             <button class="btn btn-danger " type="button">Delete</button>
                         </td>
