@@ -34,12 +34,12 @@
                     <input type="text" placeholder="Datepicker" class="form-control" bsDatepicker [bsConfig]="{ isAnimated: true }" [minDate]="minDate" [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY' }">
                 </div>
             </div>
-            <!--
-               <div class="col-xs-12 col-12 col-md-5 form-group">
 
-                 <div class="form-group">
-                    <label class="control-label" for="Country">Choose CarType:</label>
-                    <select *ngIf="getCarType()" [(ngModel)]="selectedCarType" (change)="onSelectCarType($event.target.value)">
+            <div class="col-xs-12 col-12 col-md-5 form-group">
+
+                <div class="form-group">
+                    <label class="control-label" for="Country"><strong> Choose CarType:</strong></label>
+                    <select class="form-control input-lg" id="CarType" formControlName='carType' *ngIf="getCarType()" [(ngModel)]="selectedCarType" (change)="onSelectCarType($event.target.value)">
                       <option value="0">Select CarType</option>
                       <option *ngFor="let CarType of getCarType()" value= {{CarType.id}}>{{CarType.name}}</option>
                     </select>
@@ -48,14 +48,14 @@
             <br>
             <div class="col-xs-12 col-12 col-md-5 form-group">
                 <div class="form-group">
-                    <label class="control-label" for="City">City:</label>
-                    <select class="form-control input-lg" id="city">
+                    <label class="control-label" for="Car"><strong> Car:</strong></label>
+                    <select class="form-control input-lg" id="Car" formControlName='car'>
                       <option *ngIf="!selectedCarType" value="0">Select car</option>
                       <option *ngFor="let car of Car" value= {{car.id}}>{{car.name}}</option>
                     </select>
                 </div>
-              </div>
-            -->
+            </div>
+
 
 
         </div>
