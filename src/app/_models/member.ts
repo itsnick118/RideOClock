@@ -1,5 +1,7 @@
+import { Booking } from "./booking";
+
 export interface Member {
-  id: number;
+  id:number;
   firstName: string;
   lastName: string;
   gender: string;
@@ -7,5 +9,6 @@ export interface Member {
   email: string;
   address: string;
   drivinglic: string;
-  password: string;
+  DateOfBirth: Date;
+  bookings:Booking[];
 }

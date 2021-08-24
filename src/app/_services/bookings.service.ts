@@ -11,12 +11,12 @@ export class BookingsService {
 
   constructor(private http: HttpClient) {}
 
-  getBooking(){
+  getBookings(){
     return this.http.get<Booking[]>(this.baseUrl+'bookings');
   }
 
   postBookings(bookings: Booking) {
-    return this.http.post(this.baseUrl + 'bookings', bookings);
+    return this.http.post(this.baseUrl + 'users/add-booking', bookings);
   }
 
 }

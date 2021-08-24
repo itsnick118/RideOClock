@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
@@ -10,7 +10,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { EditComponent } from './edit/edit.component';
 import {DropdownModule} from 'primeng/dropdown';
 import { BookingComponent } from './booking/booking.component';
-
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BsDatepickerModule} from "ngx-bootstrap/datepicker"
 import{BrowserAnimationsModule} from "@angular/platform-browser/animations";
@@ -22,6 +22,13 @@ import { MemberDeleteComponent } from './Members/member-delete/member-delete.com
 import { MemberEditComponent } from './Members/member-edit/member-edit.component';
 import { MemberDetailsComponent } from './Members/member-details/member-details.component';
 import { ListsComponent } from './Members/lists/lists.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ToastrModule } from 'ngx-toastr';
+import { BookingHistoryComponent } from './booking-history/booking-history.component';
+import { JwtInterceptor } from './_interceptors/jwt.interceptor';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,8 +42,8 @@ import { ListsComponent } from './Members/lists/lists.component';
     RegistrationComponent,
     MemberDeleteComponent,
     MemberEditComponent,
-    MemberDetailsComponent
-
+    MemberDetailsComponent,
+    BookingHistoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,16 +51,24 @@ import { ListsComponent } from './Members/lists/lists.component';
     CarouselModule.forRoot(),
     HttpClientModule,
     FormsModule,
-    BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
+    BsDatepickerModule.forRoot(),
     ReactiveFormsModule,
     InputTextModule,
     CalendarModule,
-    DropdownModule
+    DropdownModule,
+    BsDropdownModule.forRoot(),
+    FontAwesomeModule,
+    ToastrModule.forRoot({positionClass:'toast-bottom-right'}),
+    TabsModule,
 
 
   ],
-  providers: [],
+  providers: [
+
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

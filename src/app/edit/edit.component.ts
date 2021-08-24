@@ -2,6 +2,7 @@ import { Member } from './../_models/member';
 import { MembersService } from './../_services/members.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -11,15 +12,41 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class EditComponent implements OnInit {
 
-  member:Member;
+  genders=['male','female']
+  registerForm: FormGroup;
 
-  constructor(private memberservice:MembersService,private _activatedRoute: ActivatedRoute,private router:Router) { }
+  constructor(private membersService: MembersService, private router: Router) {}
 
   ngOnInit(): void {
-    let membercode:string=this._activatedRoute.snapshot.params['code'];
-    let mcode:number=parseInt(membercode);
-    this.memberservice.getMemberbyid(mcode).subscribe(data=>this.member=data);
+    this.initiliazeForm();
   }
 
+  initiliazeForm(){
+    this.registerForm=new FormGroup({
+      firstName:new FormControl('', Validators.required),
+      lastName:new FormControl('',Validators.required),
+      gender:new FormControl('', Validators.required),
+      mobile:new FormControl('', [Validators.required, Validators.minLength(10)]),
+      email:new FormControl('', Validators.required),
+      address:new FormControl('', Validators.required),
+      password:new FormControl('', Validators.required),
+      drivinglic:new FormControl('',[Validators.required, Validators.maxLength(10),Validators.minLength(10)]),
+
+    })
+  }
+
+  register() {
+    this.membersService
+      .postMembers(this.registerForm.value)
+      .subscribe((data) => {
+        this.router.navigateByUrl('/lists');
+      });
+      alert("you have successfully register to the ROR");
+
+  }
+
+  cancel() {
+    console.log('cancelled');
+  }
 
 }

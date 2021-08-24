@@ -1,24 +1,24 @@
 <div class="container" style=" margin-top:2cm">
     <h2 class="text-center text-primary">SignIn</h2>
     <hr class="mb-4">
-    <form #form='ngForm' class="mb-4" autocomplete="off">
+    <form #form='ngForm' class="mb-4" (ngSubmit)="login()" autocomplete="off">
         <div class="form-group">
             <label>UserName</label>
-            <input type="text" class="form-control" #username="ngModel" name="username" [(ngModel)]="formModel.username">
+            <input type="text" class="form-control" name="username" [(ngModel)]="model.username">
         </div>
         <br>
         <div class="form-group">
             <label>PassWord</label>
-            <input #password="ngModel" class="form-control" name="password" [(ngModel)]="formModel.password">
+            <input type="password" class="form-control" name="password" [(ngModel)]="model.password">
         </div>
         <br>
         <br>
         <div class="form-group text-center">
-            <button class="btn btn-success btn-lg mr-2" type="submit">SignIn</button>
+            <button class="btn btn-success btn-lg mr-2" type="submit">LogIn</button>
             <button class="btn btn-default mr-2" type="button">Cancel</button>
         </div>
         <p class="login-callout mt-3">
-            New to RideOclock?
+            New to User?
             <a routerLink="/registration">Create an account</a>.
         </p>
     </form>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Member } from "src/app/_models/member";
+
 import { MembersService } from "src/app/_services/members.service";
 
 
@@ -10,7 +11,6 @@ import { MembersService } from "src/app/_services/members.service";
 })
 export class ListsComponent implements OnInit {
   members: Member[];
-  member:Member;
 
   constructor(private memberservice: MembersService) {
 

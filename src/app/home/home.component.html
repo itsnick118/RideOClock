@@ -22,19 +22,21 @@
 <br>
 <h3 style="text-align:center">Your safety is our priority - RideOClock is your partner in safe travel</h3>
 <p style="text-align:center">To ensure you travel safely, we have taken stringent Covid-19 <br>safety measures to protect each of our guest</p>
+
 <div>
     <img style="margin-left: 13cm;" src="../../assets/Images/a.png">
     <img style="margin-left:1cm;" src=" ../../assets/Images/b.png ">
     <img style="margin-left:1cm;" src="../../assets/Images/c.png ">
     <img style="margin-left:1cm;" src="../../assets/Images/d.png ">
 </div>
+<hr>
 <h3 style="text-align:center ">We simplified car rentals, so you can focus on what's important to you.</h3>
 <div>
     <img style='margin-left:6.5cm' src="../../assets/Images/1.JPG " width="350 ">
     <img src="../../assets/Images/2.JPG " width="350 ">
     <img src="../../assets/Images/3.JPG " width="350 ">
     <br>
-    <br>
+    <hr>
     <br>
     <img style='margin-left:6.5cm' src="../../assets/Images/4.JPG " width="350 ">
     <img src="../../assets/Images/5.JPG " width="350 ">
@@ -43,10 +45,18 @@
     <br>
 </div>
 <!--Booking here-->
-<div class="text-center">
+<div class="text-center" *ngIf="!registerMode">
     <p class='lead'><strong>Rent your car... all you need to is sign up</strong> </p>
-    <button class="btn btn-primary btn-lg mr-2" type="submit" r routerLink="/registration">Register</button>
+    <button class="btn btn-primary btn-lg mr-2" type="submit" (click)="registerToggle()" routerLink="/registration">Register</button>&nbsp;
     <button class="btn btn-info btn-lg" type="submit" routerLink="/aboutus">Learn More</button>
+
+    <div *ngIf="registerMode" class="container">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
+            </div>
+        </div>
+    </div>
 </div>
 <br>
 <br>
@@ -121,7 +131,7 @@
         </section>
         <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
             © 2021 Copyright:
-            <a class="text-reset fw-bold" href="https://www.google.com/">RideOClock@google.com</a>
+            <a class="text-reset fw-bold" href="https://www.facebook.com/">RideOClock@google.com</a>
         </div>
     </footer>
 </div>

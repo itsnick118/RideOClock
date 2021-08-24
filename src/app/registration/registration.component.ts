@@ -1,9 +1,18 @@
+import { AccountService } from './../_services/account.service';
 import { HttpClient } from '@angular/common/http';
 import { Member } from './../_models/member';
 import { MembersService } from './../_services/members.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-registration',
@@ -11,40 +20,72 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./registration.component.css'],
 })
 export class RegistrationComponent implements OnInit {
-  genders=['male','female']
+
+  @Output() cancelRegister = new EventEmitter();
+  genders = ['male', 'female'];
+
   registerForm: FormGroup;
 
-  constructor(private membersService: MembersService, private router: Router) {}
+  maxDate: Date;
+
+  validationErrors: string[] = [];
+
+  model: any = {};
+
+  constructor(
+    private accountService: AccountService,
+    private router: Router,
+    private toastr: ToastrService,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.initiliazeForm();
+
   }
 
-  initiliazeForm(){
-    this.registerForm=new FormGroup({
-      firstName:new FormControl('', Validators.required),
-      lastName:new FormControl('',Validators.required),
-      gender:new FormControl('', Validators.required),
-      mobile:new FormControl('', [Validators.required, Validators.minLength(10)]),
-      email:new FormControl('', Validators.required),
-      address:new FormControl('', Validators.required),
-      password:new FormControl('', Validators.required),
-      drivinglic:new FormControl('',[Validators.required, Validators.maxLength(10),Validators.minLength(10)]),
+  initiliazeForm() {
+    this.registerForm = this.fb.group({
+      gender: ['male'],
+      username: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      dateOfBirth: ['', Validators.required],
+      address: ['', Validators.required],
+      email: ['', Validators.required],
+      mobile: ['', Validators.required],
+      drivinglic: ['', Validators.required],
+      password: [
+        '',
+        [Validators.required, Validators.minLength(4), Validators.maxLength(8)],
+      ],
+      confirmPassword: [
+        '',
+        [Validators.required, this.matchValues('password')],
+      ],
+    });
+  }
 
-    })
+  matchValues(matchTo: string): ValidatorFn {
+    return (control: AbstractControl) => {
+      return control?.value === control?.parent?.controls[matchTo].value
+        ? null
+        : { isMatching: true };
+    };
   }
 
   register() {
-    this.membersService
-      .postMembers(this.registerForm.value)
-      .subscribe((data) => {
-        this.router.navigateByUrl('/lists');
+    this.accountService.register(this.registerForm.value).subscribe(
+      (response) => {
+        console.log(response);
+        this.cancel();
+      },
+      error => {
+        this.validationErrors = error;
       });
-      alert("you have successfully register to the ROR");
-
+    this.router.navigate(['/bookings']);
   }
-
   cancel() {
-    console.log('cancelled');
+    this.cancelRegister.emit(false);
   }
 }

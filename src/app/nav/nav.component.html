@@ -10,30 +10,53 @@
                     <a class="nav-link " routerLink="/" routerLinkActive='active'>Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " routerLink="/lists" routerLinkActive='active'>lists</a>
+                    <a class="nav-link " routerLink="/lists" routerLinkActive='active' *ngIf="accountService.currentUser$ | async">lists</a>
                 </li>
+                <!--
                 <li class="nav-item">
-                    <a class="nav-link " routerLink="/bookings" routerLinkActive='active'>Booking</a>
+                    <a class="nav-link " routerLink="/bookings" routerLinkActive='active' *ngIf="accountService.currentUser$ | async">Booking</a>
                 </li>
+               -->
                 <li class="nav-item">
-                    <a class="nav-link " routerLink="/aboutus" routerLinkActive='active'>AboutUs</a>
+                    <a class="nav-link " routerLink="/aboutus" routerLinkActive='active' *ngIf="accountService.currentUser$ | async">AboutUs</a>
                 </li>
             </ul>
-            <div class="dropdown" dropdown>
-                <a class="dropdown-toggle text-light" dropdownToggle>Welcome user</a>
+            <!--
+            <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
+
+                <a class="dropdown-toggle text-light ml-2" dropdownToggle>Welcome {{user.knownAs || user.username | titlecase}}</a>
                 <div class="dropdown-menu mt-3" *dropdownMenu>
-                    <a class="dropdown-item" href="/edit">Edit Profile</a>
+                    <a routerLink='/medits' class="dropdown-item">Edit Profile</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item">LogOut</a>
+                    <a class="dropdown-item outline-danger" (click)="logout()">Logout</a>
                 </div>
             </div>
-            <form class="d-flex" #loginForm="ngForm" autocomplete="off">
-                <!-- <input class="form-control me-2" type="text" placeholder="username" name="username">
-                <input class="form-control me-2" type="password" placeholder="password" name="password">
-                -->
-                <button class="btn  btn-danger" type="submit" routerLink="/login">LogIn/SignUp</button>&nbsp;&nbsp;
+          -->
 
+            <form class="form-inline mt-2 mt-md-0" *ngIf="(accountService.currentUser$ | async)===null" class="d-flex" #loginForm="ngForm" autocomplete="off" (ngSubmit)="login()">
+                <input class="form-control mr-sm-2" type="text" placeholder="username" name="username" [(ngModel)]="model.username">
+                <input class="form-control mr-sm-2" type="password" placeholder="password" name="password" [(ngModel)]="model.password">
+                <button class="btn btn-success btn-lg mr-2" type="submit">LogIn</button>
+                <!-- <button class="btn  btn-danger" type="submit" routerLink="/login">LogIn/SignUp</button>&nbsp;&nbsp; -->
             </form>
+
+            &nbsp;
+            <div *ngIf="accountService.currentUser$ | async">
+                <button class="btn btn-danger btn-lg mr-2" (click)="logout()">LogOut</button>
+            </div>
+
+            <!--
+               <div *ngIf="accountService.currentUser$ | async">
+                <button class="btn btn-outline-info btn-lg mr-2">Your Profile</button>
+            </div>
+            &nbsp;
+            <div *ngIf="accountService.currentUser$ | async">
+                <button class="btn btn-outline-danger btn-lg mr-2" (click)="logout()">LogOut</button>
+            </div>
+
+
+            -->
+
         </div>
     </div>
 </nav>

@@ -1,35 +1,65 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { take } from 'rxjs/operators';
 import { Member } from 'src/app/_models/member';
+import { User } from 'src/app/_models/user';
+import { AccountService } from 'src/app/_services/account.service';
 import { MembersService } from 'src/app/_services/members.service';
-
 
 @Component({
   selector: 'app-member-edit',
   templateUrl: './member-edit.component.html',
-  styleUrls: ['./member-edit.component.css']
+  styleUrls: ['./member-edit.component.css'],
 })
 export class MemberEditComponent implements OnInit {
+  @ViewChild('editForm') editForm: NgForm;
+  member: Member;
+  user: User;
+  constructor(
+    private accountService: AccountService,
+    private memberService: MembersService,
+    private toastr: ToastrService
+  ) {
+    this.accountService.currentUser$
+      .pipe(take(1))
+      .subscribe((user) => (this.user = user));
+  }
 
-  member:Member;
-
-  constructor(private memberservice:MembersService,private _activatedRoute: ActivatedRoute,private router:Router) { }
-
+  /*
   ngOnInit(): void {
     let membercode:string=this._activatedRoute.snapshot.params['id'];
     let mcode:number=parseInt(membercode);
     this.memberservice.getMemberbyid(mcode).subscribe(data=>this.member=data);
   }
 
-  update(frm){
-  if(frm.invalid)
-  return;
+   update(frm) {
+    if (frm.invalid) return;
 
-  console.log(this.member);
+    console.log(this.member);
 
-  this.memberservice.updateMember(this.member).subscribe();
+    this.memberservice.updateMember(this.member).subscribe();
 
-  alert("successfully updated");
+    alert('successfully updated');
   }
+  */
+  ngOnInit(): void {
+    this.loadMember();
+  }
+
+  loadMember() {
+    this.memberService.getMember(this.user.username).subscribe(member => {
+      this.member = member;
+    })
+  }
+
+  updateMember() {
+    this.memberService.updateMember(this.member).subscribe(() => {
+      this.toastr.success('Profile updated successfully');
+      this.editForm.reset(this.member);
+    })
+  }
+
 
 }

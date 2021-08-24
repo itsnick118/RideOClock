@@ -1,3 +1,4 @@
+import { AuthGuard } from './_guards/auth.guard';
 
 
 import { RegistrationComponent } from './registration/registration.component';
@@ -13,17 +14,18 @@ import { ListsComponent } from './Members/lists/lists.component';
 import { MemberDetailsComponent } from './Members/member-details/member-details.component';
 import { MemberEditComponent } from './Members/member-edit/member-edit.component';
 
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'lists', component: ListsComponent },
+  { path: 'lists', component: ListsComponent, canActivate:[AuthGuard]},
   { path: 'bookings', component: BookingComponent },
-  { path: 'edits/:id', component: EditComponent },
-  { path: 'mdetails/:id', component: MemberDetailsComponent },
-  { path: 'medits/:id', component: MemberEditComponent },
-  { path: 'mdeletes/:id', component: MemberDeleteComponent },
+  { path: 'edits/:username', component: EditComponent },
+  { path: 'members/:username', component: MemberDetailsComponent },
+  { path: 'medits/:username', component: MemberEditComponent },
+  { path: 'mdeletes/:userma,e', component: MemberDeleteComponent },
   { path: 'aboutus', component: AboutusComponent },
   {path:'login',component:SigninComponent},
-  {path:'registration',component:RegistrationComponent}
+  {path:'registration',component:RegistrationComponent},
 ];
 
 @NgModule({
