@@ -29,6 +29,7 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +45,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     MemberEditComponent,
     MemberDetailsComponent,
     BookingHistoryComponent,
+
   ],
   imports: [
     BrowserModule,
