@@ -45,7 +45,8 @@ export class NavComponent implements OnInit {
         this.toastr.error(error.error);
       },
     );
-    this.router.navigateByUrl('members/:username');
+    this.router.navigateByUrl('/members');
+
   }
 
   logout() {

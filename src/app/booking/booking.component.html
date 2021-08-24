@@ -1,6 +1,6 @@
 <div class="container" style=" margin-bottom:2cm; margin-top: 0.5cm;">
     <h2 class=" text-primary">Book your Car</h2>
-    <div class="row" *ngFor="members of members.bookings">
+    <div class="row" *ngIf="members">
         <h1>welcome {{members.firstName}}</h1>
     </div>
     <form [formGroup]='BookingForm' (ngSubmit)="Book()" autocomplete="off">
